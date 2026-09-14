@@ -14,6 +14,11 @@
 * [BREAKING][type][rust] `NodeRpcClient::get_block_by_number` returns a `SignedBlock` instead of a `ProvenBlock`. The response carries the block and its proof in separate fields, and the block field holds a signed block.
 * [BREAKING][rust] Replaced the `ValidatorKeys` re-export with `ValidatorConfig` and `ProvingOptions` with `Prover`. Removed the upstream `FungibleAssetDelta`, `NonFungibleAssetDelta`, `NonFungibleDeltaAction`, and `SmtForest` re-exports. `TransactionRequest::incoming_assets` now returns `Vec<Asset>` for assets without fungible amounts.
 
+### Features
+
+* [FEATURE][cli] Added `--invitation-code` to `new-wallet` and `new-account`, which registers the new account on the network allowlist, and `account --register <ID> --invitation-code <CODE>`, which registers an account that the client already tracks.
+* [FEATURE][rust] Added `Client::register_account`, which binds an invitation code to an account ID on the network allowlist.
+
 ### Fixes
 
 * [FIX][rust] Added validation of cached transaction encryption keys during deserialization. Unsupported encryption schemes and empty or oversized key IDs are rejected before reading the key ID bytes ([#2411](https://github.com/0xMiden/rust-sdk/pull/2411)).
